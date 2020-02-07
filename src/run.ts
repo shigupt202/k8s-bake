@@ -28,6 +28,7 @@ abstract class RenderEngine {
 
 class HelmRenderEngine extends RenderEngine {
     public bake = async (): Promise<any> => {
+        core.log("in HelmRenderEngine");                
         const helmPath = await getHelmPath();
         core.debug("Creating the template argument string..");
         var args = this.getTemplateArgs()
@@ -150,6 +151,7 @@ class KustomizeRenderEngine extends RenderEngine {
 async function run() {
     const renderType = core.getInput('renderEngine', { required: true });
     let renderEngine: RenderEngine;
+    console.log("in run");
     switch (renderType) {
         case 'helm2':
             renderEngine = new HelmRenderEngine();
