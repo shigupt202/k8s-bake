@@ -108,6 +108,7 @@ function findHelm(rootFolder: string): string {
 
 export async function getHelmPath() {
     var helmPath = "";
+    core.log("inside getHelmPath()");
     if (core.getInput('helm-version', { required : false })) {
         var version = core.getInput('helm-version', { required: false });
         if ( !!version && version != "latest" ){
